@@ -1,7 +1,5 @@
 import AuthService from '../service/auth'
 
-
-
 const state = {
   isLoading: false,
   user: null,

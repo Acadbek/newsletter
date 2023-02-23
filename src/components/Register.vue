@@ -2,13 +2,13 @@
   <h1 v-if="isLoading">Loading...</h1>
   <div class="flex justify-center items-center">
     <form class="flex flex-col py-12">
-      <Input v-model="username" type="text" placeholder="..." label="Name" />
-      <Input v-model="email" type="text" placeholder="..." label="Email" />
+      <Input type="text" placeholder="..." label="Name" v-model="username" />
+      <Input type="text" placeholder="..." label="Email" v-model="email" />
       <Input
-        v-model="password"
         type="password"
         placeholder="..."
         label="Password"
+        v-model="password"
       />
       <Button @click="register" class="mt-4">Register</Button>
     </form>
@@ -31,6 +31,9 @@ export default {
         email: this.email,
         password: this.password,
         username: this.username,
+        // email: 'asad@mail.com',
+        // password: 'asadasdasdasd@mail.com',
+        // username: 'asad@mailasdasdas.asdascom'
       };
       this.$store
         .dispatch("register", data)
