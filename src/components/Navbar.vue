@@ -1,9 +1,9 @@
 <template>
   <nav class="flex justify-between container py-2 items-center border-b">
-    <RouterLink tag="h1" :to="{ name: 'home' }" class="text-[35px]"
-      >Asad</RouterLink
-    >
-    <template v-if="isLoggedIn">Blog </template>
+    <RouterLink tag="h1" :to="{ name: 'home' }" class="text-[35px]">Asad</RouterLink>
+    <template v-if="isLoggedIn">
+      <RouterLink :to="{ name: 'home' }">Profile</RouterLink>
+    </template>
     <template v-else>
       <ul class="flex items-center gap-4">
         <li>
@@ -19,6 +19,7 @@
 <script>
 import { mapState } from "vuex";
 import { logo } from "../constants";
+
 export default {
   data() {
     return {
