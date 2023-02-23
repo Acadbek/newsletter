@@ -31,14 +31,11 @@ export default {
         email: this.email,
         password: this.password,
         username: this.username,
-        // email: 'asad@mail.com',
-        // password: 'asadasdasdasd@mail.com',
-        // username: 'asad@mailasdasdas.asdascom'
       };
       this.$store
         .dispatch("register", data)
         .then((user) => {
-          console.log("user", user);
+          this.$router.push({ name: "home" });
         })
         .catch((err) => {
           console.log(err);

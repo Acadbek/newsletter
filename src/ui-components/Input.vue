@@ -1,13 +1,13 @@
 <template>
-  <label :for="label" class="mb-1">{{ label }}</label>
+  <label class="mb-1" :for="label">{{ label }}</label>
   <input
     class="border-none border-2 mb-3 px-4 py-2 bg-black outline-none"
     maxlength="100"
     :type="type"
-    :placeholder="placeholder"
     :id="label"
-    :value="modelValue"
+    :placeholder="placeholder"
     @input="updateInput"
+    :value="modelValue"
   />
 </template>
 
@@ -22,7 +22,7 @@ export default {
   },
   methods: {
     updateInput(e) {
-      this.$emit("update:modelvalue", e.target.value);
+      this.$emit("update:modelValue", e.target.value);
     },
   },
 };
