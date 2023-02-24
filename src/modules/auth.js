@@ -8,6 +8,12 @@ const state = {
   isLoggedIn: null
 }
 
+const getters = {
+  currentUser: state => {
+    return state.user
+  }
+}
+
 const mutations = {
   registerStart(state) {
     state.isLoading = true,
@@ -72,4 +78,4 @@ const actions = {
   }
 }
 
-export default { state, mutations, actions }
+export default { state, mutations, actions, getters }

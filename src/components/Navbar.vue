@@ -1,6 +1,8 @@
 <template>
   <nav class="flex justify-between container py-2 items-center border-b">
-    <RouterLink tag="h1" :to="{ name: 'home' }" class="text-[35px]">Asad</RouterLink>
+    <RouterLink tag="h1" :to="{ name: 'home' }" class="text-[35px]"
+      >Asad</RouterLink
+    >
     <template v-if="isLoggedIn">
       <RouterLink :to="{ name: 'home' }">Profile</RouterLink>
     </template>
@@ -12,7 +14,7 @@
         <RouterLink :to="{ name: 'register' }">Register</RouterLink>
       </ul>
     </template>
-    {{ user?.username }}
+    {{ currentUser?.username }}
   </nav>
 </template>
 
@@ -28,9 +30,12 @@ export default {
   },
   computed: {
     ...mapState({
-      user: (state) => state.auth.user,
+      // user: (state) => state.auth.user,
       isLoggedIn: (state) => state.auth.isLoggedIn,
     }),
+    currentUser() {
+      return this.$store.getters.currentUser;
+    },
   },
 };
 </script>
