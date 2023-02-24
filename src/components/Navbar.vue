@@ -5,6 +5,10 @@
     >
     <template v-if="registeredUser">
       <RouterLink :to="{ name: 'home' }">Profile</RouterLink>
+      <h1 class="bg-green-900 px-2">
+        {{ currentUser?.username }}
+      </h1>
+      <Button @click="logout">Log out</Button>
     </template>
     <template v-if="anonymousUser">
       <ul class="flex items-center gap-4">
@@ -14,9 +18,6 @@
         <RouterLink :to="{ name: 'register' }">Register</RouterLink>
       </ul>
     </template>
-    <h1 class="bg-green-900 px-2">
-      {{ currentUser?.username }}
-    </h1>
   </nav>
 </template>
 
@@ -31,24 +32,17 @@ export default {
       logo,
     };
   },
+  methods: {
+    logout() {
+      return this.$store.commit("logout");
+    },
+  },
   computed: {
-    ...mapState({
-      // isLoggedIn: (state) => state.auth.isLoggedIn,
-    }),
     ...mapGetters({
       registeredUser: getterType.registeredUser,
       currentUser: getterType.currentUser,
       anonymousUser: getterType.isAnonymous,
     }),
-    // registeredUser() {
-    //   return this.$store.getters[getterType.registeredUser];
-    // },
-    // currentUser() {
-    //   return this.$store.getters[getterType.currentUser];
-    // },
-    // anonymousUser() {
-    //   return this.$store.getters[getterType.isAnonymous];
-    // },
   },
 };
 </script>

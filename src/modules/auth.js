@@ -1,4 +1,4 @@
-import { setItem } from '@/helpers/storageFn'
+import { setItem, removeItem, getItem } from '@/helpers/storageFn'
 import AuthService from '@/service/auth'
 import { getterType } from './types'
 
@@ -65,6 +65,11 @@ const mutations = {
     state.isLoading = false,
       state.user = null
     state.registeredUser = false
+  },
+  logout(state) {
+    state.user = null,
+      state.registeredUser = false
+    removeItem('token')
   }
 }
 

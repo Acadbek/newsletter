@@ -14,3 +14,7 @@ export const setItem = (key, data) => {
     return null
   }
 }
+
+export const removeItem = key => {
+  localStorage.removeItem(key)
+} 
