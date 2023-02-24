@@ -12,5 +12,8 @@ export default {
   components: {
     Navbar,
   },
+  mounted() {
+    this.$store.dispatch("getCurrentUser");
+  },
 };
 </script>

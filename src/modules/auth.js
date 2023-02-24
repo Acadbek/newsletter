@@ -1,16 +1,23 @@
 import { setItem } from '@/helpers/storageFn'
 import AuthService from '@/service/auth'
+import { getterType } from './types'
 
 const state = {
   isLoading: false,
   user: null,
   error: null,
-  isLoggedIn: null
+  registeredUser: null
 }
 
 const getters = {
-  currentUser: state => {
+  [getterType.currentUser]: state => {
     return state.user
+  },
+  [getterType.registeredUser]: state => {
+    return Boolean(state.registeredUser)
+  },
+  [getterType.isAnonymous]: state => {
+    return state.registeredUser === false
   }
 }
 
@@ -19,17 +26,17 @@ const mutations = {
     state.isLoading = true,
       state.user = null,
       state.error = null
-    state.isLoggedIn = null
+    state.registeredUser = null
   },
   registerSuccess(state, payload) {
     state.isLoading = false,
       state.user = payload
-    state.isLoggedIn = true
+    state.registeredUser = true
   },
   registerFailed(state, payload) {
     state.isLoading = false,
       state.error = payload
-    state.isLoggedIn = false
+    state.registeredUser = false
   },
   loginStart(state) {
     state.isLoading = true,
@@ -39,12 +46,25 @@ const mutations = {
   loginSuccess(state, payload) {
     state.isLoading = false,
       state.user = payload
-    state.isLoggedIn = true
+    state.registeredUser = true
   },
   loginFailed(state, payload) {
     state.isLoading = false,
       state.error = payload
-    state.isLoggedIn = false
+    state.registeredUser = false
+  },
+  currentUserStart(state) {
+    state.isLoading = true
+  },
+  currentUserSuccess(state, payload) {
+    state.isLoading = false,
+      state.user = payload
+    state.registeredUser = true
+  },
+  currentUserFailed(state) {
+    state.isLoading = false,
+      state.user = null
+    state.registeredUser = false
   }
 }
 
@@ -74,6 +94,15 @@ const actions = {
           context.commit('loginFailed', err.response?.data?.errors)
           reject(err.response?.data?.errors)
         })
+    })
+  },
+  getCurrentUser(context) {
+    return new Promise(resolve => {
+      context.commit('currentUserStart')
+      AuthService.getCurrentUser().then(response => {
+        context.commit('currentUserSuccess', response.data.user)
+        resolve(response.data.user)
+      }).catch(err => context.commit('currentUserFailed'))
     })
   }
 }
