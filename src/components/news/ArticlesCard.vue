@@ -1,13 +1,13 @@
 <template>
-  <RouterLink :to="article.slug">
+  <div>
     <div class="card border-[#00bd7e] border-2 px-4 py-2">
-      <h3 :to="article.slug" class="main-title !truncate">
-        {{ article.title }}
-      </h3>
+      <RouterLink :to="`news/${article.slug}`" class="main-title !truncate">
+        {{ title }}
+      </RouterLink>
       <p class="font-mono truncate">/{{ article.slug }}</p>
       <p class="mt-2">{{ body }}</p>
     </div>
-  </RouterLink>
+  </div>
 </template>
 
 <script>
@@ -21,6 +21,9 @@ export default {
   computed: {
     body() {
       return this.article.body.substring(0, 40) + "...";
+    },
+    title() {
+      return this.article.title.substring(0, 12) + "...";
     },
   },
 };

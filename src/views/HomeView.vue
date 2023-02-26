@@ -1,6 +1,12 @@
 <template>
-  <h1>Home</h1>
-  <ul class="grid grid-cols-4 gap-4">
+  <h1>NEWS</h1>
+  <div
+    class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2"
+    v-if="loading"
+  >
+    <loader />
+  </div>
+  <ul v-else class="grid grid-cols-3 gap-4">
     <li v-for="article in data" :key="article.id">
       <articles-card :article="article" />
     </li>
@@ -9,11 +15,12 @@
 
 <script>
 import { mapState } from "vuex";
-import ArticlesCard from "../components/ArticlesCard.vue";
 export default {
-  components: { ArticlesCard },
   computed: {
-    ...mapState({ data: (state) => state.articles.data }),
+    ...mapState({
+      data: (state) => state.articles.data,
+      loading: (state) => state.articles.isLoading,
+    }),
   },
   mounted() {
     this.$store.dispatch("getArticles");

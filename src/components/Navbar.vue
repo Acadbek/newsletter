@@ -1,10 +1,10 @@
 <template>
   <nav class="flex px-2 justify-between container py-2 items-center border-b">
-    <RouterLink tag="h1" :to="{ name: 'home' }" class="text-[35px]"
+    <RouterLink tag="h1" :to="{ name: 'news' }" class="text-[35px]"
       >Asad</RouterLink
     >
     <template v-if="registeredUser">
-      <RouterLink :to="{ name: 'home' }">Profile</RouterLink>
+      <RouterLink :to="{ name: 'news' }">Profile</RouterLink>
 
       <Button @click="logout">Log out</Button>
     </template>

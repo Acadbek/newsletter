@@ -40,7 +40,7 @@ export default {
       this.$store
         .dispatch("register", data)
         .then((user) => {
-          this.$router.push({ name: "home" });
+          this.$router.push({ name: "news" });
         })
         .catch((err) => {
           console.log(err);
