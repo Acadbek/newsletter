@@ -4,6 +4,14 @@
 @tailwind components;
 @tailwind utilities;
 
+@font-face {
+  font-family: "RA";
+  src: url("../../public/fonts/Rajdhani-SemiBold.woff") format("woff2"),
+    url("../../public/fonts/Rajdhani-SemiBold.woff.woff") format("woff");
+  font-style: normal;
+  font-display: swap;
+}
+
 a,
 .green {
   text-decoration: none;
@@ -14,4 +22,9 @@ a,
 .container {
   max-width: 1200px;
   margin: 0 auto;
+}
+
+.card .main-title {
+  font-size: 45px;
+  font-family: "RA";
 }

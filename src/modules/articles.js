@@ -29,9 +29,9 @@ const actions = {
   getArticles(context) {
     return new Promise((resolve, reject) => {
       context.commit('getArticlesStart')
-      ArticesService.getArticles().then((result) => {
-        context.commit('getArticlesSuccess', result.data.articles)
-        resolve(result.data.articles)
+      ArticesService.getArticles().then((response) => {
+        context.commit('getArticlesSuccess', response.data.articles)
+        resolve(response.data.articles)
       }).catch(() => context.commit('getArticlesFailed', err.message));
     })
   }

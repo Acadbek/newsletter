@@ -26,8 +26,8 @@
 
 <script>
 import { mapGetters } from "vuex";
-import { logo } from "../constants";
-import { getterType } from "../modules/types";
+import { logo } from "@/constants";
+import { getterType } from "@/modules/types";
 
 export default {
   data() {
@@ -37,6 +37,7 @@ export default {
   },
   methods: {
     logout() {
+      this.$router.push({ name: "login" });
       return this.$store.commit("logout");
     },
   },
