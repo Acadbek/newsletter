@@ -8,7 +8,7 @@
   </div>
   <ul v-else class="grid grid-cols-3 gap-4">
     <li v-for="article in data" :key="article.id">
-      <articles-card :article="article" />
+      <news-card :article="article" />
     </li>
   </ul>
 </template>

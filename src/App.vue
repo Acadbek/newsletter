@@ -14,6 +14,7 @@ export default {
   },
   mounted() {
     this.$store.dispatch("getCurrentUser");
+    // this.$router.push("/news");
   },
 };
 </script>
