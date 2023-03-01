@@ -6,6 +6,10 @@
       </RouterLink>
       <p class="font-mono truncate">/{{ article.slug }}</p>
       <p class="mt-2">{{ body }}</p>
+      <time class="text-gray-500 text-" :datetime="`${day}-${month}-${year}`">
+        {{ day }}/{{ month }}/{{ year }}</time
+      >
+      {{ datatime }}
     </div>
   </div>
 </template>
@@ -24,6 +28,19 @@ export default {
     },
     title() {
       return this.article.title.substring(0, 12) + "...";
+    },
+    day() {
+      return new Date(this.article.createdAt).getDay();
+    },
+    month() {
+      return new Date(this.article.createdAt).getMonth();
+    },
+    year() {
+      return new Date(this.article.createdAt).getFullYear();
+    },
+    datatime() {
+      // console.log(day.value);
+      // return ;
     },
   },
 };

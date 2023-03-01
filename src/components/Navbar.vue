@@ -4,9 +4,10 @@
       >Asad</RouterLink
     >
     <template v-if="registeredUser">
-      <RouterLink :to="{ name: 'news' }">Profile</RouterLink>
-
-      <Button @click="logout">Log out</Button>
+      <RouterLink :to="{ name: 'post' }">
+        <Button>Post</Button>
+      </RouterLink>
+      <Button @click="logout">Log out</Button>  
     </template>
     <template v-if="anonymousUser">
       <ul class="flex items-center gap-4">
