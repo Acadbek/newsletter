@@ -16,6 +16,7 @@
   </div>
 </template>
 
+
 <script>
 import nouser from "@/assets/nouser.png";
 export default {
