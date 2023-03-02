@@ -10,7 +10,6 @@
       <i class="text-green-700 text-[14px]">{{ day }}/{{ month }}/{{ year }}</i>
     </div>
     <h3 class="text-[24px] mb-4 px-4 text-center">
-      
       {{ article.description }}
     </h3>
     <p class="text-white px-4 py-4 border-dashed border">{{ article.body }}</p>
