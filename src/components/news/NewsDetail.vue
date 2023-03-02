@@ -14,6 +14,7 @@
     </h3>
     <p class="text-white px-4 py-4 border-dashed border">{{ article.body }}</p>
   </div>
+  
 </template>
 
 
