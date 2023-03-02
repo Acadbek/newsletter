@@ -12,7 +12,8 @@
     <h3 class="text-[24px] mb-4 px-4 text-center">
       {{ article.description }}
     </h3>
-    <p class="bg-green-900 px-4 py-4">{{ article.body }}</p>
+    <!-- <p class="text-white px-4 py-4 border-dashed border">{{ article.body }}</p> -->
+    <p v-html="body"></p>
   </div>
 </template>
 

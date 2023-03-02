@@ -7,6 +7,9 @@ const ArticlesService = {
   getArticleDetail(slug) {
     return axios.get(`/articles/${slug}`)
   },
+  post(article) {
+    return axios.post(`/articles`, { article })
+  },
 }
 
 export default ArticlesService;

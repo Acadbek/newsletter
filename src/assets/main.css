@@ -28,3 +28,11 @@ a,
   font-size: 35px;
   font-family: "RA";
 }
+
+.body {
+  background-image: url("./png-clipart-kali-linux-backtrack-penetration-test-ubuntu-sick-branch-monochrome-thumbnail-removebg-preview.png");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+  background-attachment: fixed;
+}
