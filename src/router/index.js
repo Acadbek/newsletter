@@ -1,5 +1,5 @@
 import { createRouter, createWebHistory } from 'vue-router'
-import { HomeView, LoginView, RegisterView, ArticleDetailsView, CreatePostView } from '@/views'
+import { HomeView, LoginView, RegisterView, ArticleDetailsView, CreatePostView, EditPostView } from '@/views'
 import { CreatePost } from '@/components'
 
 const router = createRouter({
@@ -19,6 +19,11 @@ const router = createRouter({
       path: '/post',
       name: 'post',
       component: CreatePostView
+    },
+    {
+      path: '/edit-post/:slug',
+      name: 'edit-post',
+      component: EditPostView
     },
     {
       path: '/register',

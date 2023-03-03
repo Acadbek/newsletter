@@ -1,14 +1,19 @@
 <template>
   <div>
-    <div class="card border-[#00bd7e] border-2 px-4 py-2">
-      <RouterLink :to="`news/${article.slug}`" class="main-title !truncate">
-        {{ title }}
-      </RouterLink>
-      <p class="font-mono truncate">/{{ article.slug }}</p>
-      <p class="mt-2">{{ body }}</p>
+    <div
+      class="card flex flex-col justify-between border-[#00bd7e] h-[200px] border-2 px-4 py-2"
+    >
+      <div>
+        <RouterLink :to="`news/${article.slug}`" class="main-title !truncate">
+          {{ title }}
+        </RouterLink>
+        <p class="font-mono truncate">/{{ article.slug }}</p>
+        <p class="mt-2">{{ body }}</p>
+      </div>
       <div class="flex justify-between pt-4">
         <div v-if="user?.username === article.author.username">
-          <Button :disabled="isLoading" @click="deletePost">Delete</Button>
+          <Button @click="deletePost" :disabled="isLoading">Delete</Button>
+          <Button @click="edit" class="ml-2" :disabled="isLoading">Edit</Button>
         </div>
         <time
           class="text-gray-500 text-[14px] p-1"
@@ -37,7 +42,9 @@ export default {
       this.$store
         .dispatch("delete", this.article.slug)
         .then(() => this.$store.dispatch("getArticles"));
-      //
+    },
+    edit() {
+      return this.$router.push(`edit-post/${this.article.slug}`);
     },
   },
 

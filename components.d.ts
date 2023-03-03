@@ -10,6 +10,7 @@ export {}
 declare module '@vue/runtime-core' {
   export interface GlobalComponents {
     CreatePost: typeof import('./src/components/CreatePost.vue')['default']
+    EditPostComponent: typeof import('./src/components/EditPostComponent.vue')['default']
     Loader: typeof import('./src/components/Loader.vue')['default']
     Login: typeof import('./src/components/Login.vue')['default']
     Navbar: typeof import('./src/components/Navbar.vue')['default']

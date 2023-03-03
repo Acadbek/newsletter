@@ -21,7 +21,10 @@ const actions = {
     return new Promise((resolve, reject) => {
       context.commit('controlStart')
       ArticlesService.post(article)
-        .then(() => context.commit('controlSuccess'))
+        .then(() => {
+          context.commit('controlSuccess')
+          resolve()
+        })
         .catch(() => context.commit('controlFailed'))
     })
   },

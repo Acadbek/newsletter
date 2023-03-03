@@ -26,8 +26,9 @@ export default {
         body: this.body,
         tagList: [],
       };
-      // console.log(body);
-      this.$store.dispatch("postData", data);
+      this.$store
+        .dispatch("postData", data)
+        .then(() => this.$router.push("/news"));
     },
   },
 };
