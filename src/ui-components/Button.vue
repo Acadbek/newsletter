@@ -11,6 +11,12 @@
 <script>
 export default {
   name: "Button",
+  props: {
+    color: {
+      type: String,
+      required: false,
+    },
+  },
   computed: {
     isDisabled() {
       return this.$store.state.auth.isLoading;
@@ -18,3 +24,5 @@ export default {
   },
 };
 </script>
+
+// [#00bd7e] //

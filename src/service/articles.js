@@ -10,6 +10,9 @@ const ArticlesService = {
   post(article) {
     return axios.post(`/articles`, { article })
   },
+  delete(slug) {
+    return axios.delete(`/articles/${slug}`)
+  },
 }
 
 export default ArticlesService;

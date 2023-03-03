@@ -5,13 +5,13 @@ const state = {
 }
 
 const mutations = {
-  postStart(state) {
+  controlStart(state) {
     state.isLoading = true
   },
-  postSuccess(state) {
+  controlSuccess(state) {
     state.isLoading = false
   },
-  postFailed(state) {
+  controlFailed(state) {
     state.isLoading = false
   }
 }
@@ -19,10 +19,21 @@ const mutations = {
 const actions = {
   postData(context, article) {
     return new Promise((resolve, reject) => {
-      context.commit('postStart')
+      context.commit('controlStart')
       ArticlesService.post(article)
-        .then(() => context.commit('postSuccess'))
-        .catch(() => context.commit('postFailed'))
+        .then(() => context.commit('controlSuccess'))
+        .catch(() => context.commit('controlFailed'))
+    })
+  },
+  delete(context, slug) {
+    return new Promise((resolve, reject) => {
+      context.commit('controlStart')
+      ArticlesService.delete(slug)
+        .then(() => {
+          context.commit('controlSuccess')
+          resolve()
+        })
+        .catch(() => context.commit('controlFailed'))
     })
   }
 }

@@ -6,15 +6,24 @@
       </RouterLink>
       <p class="font-mono truncate">/{{ article.slug }}</p>
       <p class="mt-2">{{ body }}</p>
-      <time class="text-gray-500 text-" :datetime="`${day}-${month}-${year}`">
-        {{ day }}/{{ month }}/{{ year }}</time
-      >
-      {{ datatime }}
+      <div class="flex justify-between pt-4">
+        <div v-if="user?.username === article.author.username">
+          <Button :disabled="isLoading" @click="deletePost">Delete</Button>
+        </div>
+        <time
+          class="text-gray-500 text-[14px] p-1"
+          :datetime="`${day}-${month}-${year}`"
+        >
+          {{ new Date(article.createdAt).toLocaleDateString("us") }}</time
+        >
+      </div>
     </div>
   </div>
 </template>
 
 <script>
+import { mapState } from "vuex";
+
 export default {
   props: {
     article: {
@@ -22,7 +31,21 @@ export default {
       required: true,
     },
   },
+
+  methods: {
+    deletePost() {
+      this.$store
+        .dispatch("delete", this.article.slug)
+        .then(() => this.$store.dispatch("getArticles"));
+      //
+    },
+  },
+
   computed: {
+    ...mapState({
+      user: (state) => state.auth.user,
+      isLoading: (state) => state.controls.isLoading,
+    }),
     body() {
       return this.article.body.substring(0, 40) + "...";
     },
