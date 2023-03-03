@@ -10,6 +10,7 @@
       <Textarea type="text" label="Comment" v-model="body" />
       <Button @click.prevent="edit">Done</Button>
     </form> -->
+    
   </div>
 </template>
 
